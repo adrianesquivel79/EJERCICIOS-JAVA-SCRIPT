@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 2: El Reparto de los Panes</title>
+  <style>
+    body {
+      background-color: #f4f6f8;
+      color: #1a252c;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+    }
+    .card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      padding: 25px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 4px 12px rgba(44, 122, 123, 0.15);
+      border: 1px solid #b2f5ea;
+    }
+    h2 {
+      color: #2c7a7b;
+      margin-top: 0;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #234e52;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #319795;
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #319795;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2c7a7b;
+    }
+    .resultado {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #e6fffa;
+      border-left: 5px solid #319795;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>Capítulo IV: El Pago Justo de los Panes</h2>
+    <p>Calcula el reparto matemático exacto de 8 monedas según los tercios consumidos por el Vizconde.</p>
+    
+    <form id="formPanes" onsubmit="return false;">
+      <label for="panesBeremiz">Panes de Beremiz:</label>
+      <input type="number" id="panesBeremiz" value="5">
+
+      <label for="panesHank">Panes de Hank (el bagdalí):</label>
+      <input type="number" id="panesHank" value="3">
+      
+      <button type="button" onclick="calcularPagoPanes()">Calcular Monedas</button>
+    </form>
+
+    <div class="resultado" id="salidaPanes">
+      Haz clic en el botón para calcular la división justa.
+    </div>
+  </div>
+
+  <script>
+    function calcularPagoPanes() {
+      // Entrada
+      var pBeremiz = parseInt(document.getElementById("panesBeremiz").value);
+      var pHank = parseInt(document.getElementById("panesHank").value);
+
+      // Algoritmo básico
+      var totalPanes = pBeremiz + pHank;
+      var totalTercios = totalPanes * 3;
+      var porcionPorPersona = totalTercios / 3; // Consumo de cada uno (8 tercios)
+
+      var aporteBeremiz = (pBeremiz * 3) - porcionPorPersona;
+      var aporteHank = (pHank * 3) - porcionPorPersona;
+
+      // Salida
+      var resultadoHTML = "<p><strong>Distribución de tercios y pago:</strong></p>" +
+        "<ul>" +
+          "<li>Total de panes: <strong>" + totalPanes + "</strong> (" + totalTercios + " tercios)</li>" +
+          "<li>Cada persona comió: <strong>" + porcionPorPersona.toFixed(1) + "</strong> tercios</li>" +
+          "<li>Beremiz aportó al Vizconde: <strong>" + aporteBeremiz + "</strong> tercios &rarr; <strong>" + aporteBeremiz + " monedas</strong></li>" +
+          "<li>Hank aportó al Vizconde: <strong>" + aporteHank + "</strong> tercios &rarr; <strong>" + aporteHank + " monedas</strong></li>" +
+        "</ul>";
+
+      document.getElementById("salidaPanes").innerHTML = resultadoHTML;
+    }
+  </script>
+
+</body>
+</html>

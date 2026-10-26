@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuatro Ejercicios Interactivos</title>
+  <!-- Tailwind CSS para el diseño responsivo y moderno -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Fuentes Google (Inter) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen py-10 px-4 sm:px-6 lg:px-8">
+
+  <!-- Encabezado Principal -->
+  <header class="max-w-7xl mx-auto text-center mb-12">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-sky-400 to-indigo-400">
+      Colección de Ejercicios Matemáticos e Algoritmos
+    </h1>
+    <p class="mt-3 text-slate-400 text-base sm:text-lg">
+      Una sola plataforma para resolver problemas clásicos de reparto, ecuaciones algebraicas y estimaciones numéricas.
+    </p>
+  </header>
+
+  <!-- Contenedor Principal Grid (2x2 en pantallas medianas/grandes) -->
+  <main class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+
+    <!-- Tarjeta 1: Reparto de Camellos -->
+    <section class="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-xl flex flex-col justify-between hover:border-amber-500/50 transition duration-300">
+      <div>
+        <div class="flex items-center justify-between border-b border-slate-700 pb-4 mb-4">
+          <h2 class="text-xl font-bold text-amber-400 flex items-center gap-2">
+            <span>🐪</span> Capítulo III: El Reparto de los Camellos
+          </h2>
+          <span class="text-xs font-semibold px-2.5 py-1 bg-amber-500/10 text-amber-300 rounded-full border border-amber-500/20">Ejercicio 1</span>
+        </div>
+        <p class="text-slate-300 text-sm mb-5">
+          Beremiz agrega 1 camello prestado para hacer divisibles las partes entre los tres hermanos.
+        </p>
+        <form id="formCamellos" onsubmit="return false;" class="space-y-4">
+          <div>
+            <label for="inputCamellos" class="block text-sm font-medium text-slate-300 mb-1">
+              Cantidad inicial de camellos:
+            </label>
+            <input type="number" id="inputCamellos" value="35" class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition">
+          </div>
+          <button type="button" onclick="calcularRepartoCamellos()" class="w-full bg-amber-600 hover:bg-amber-500 text-white font-semibold py-2.5 rounded-lg shadow-md transition duration-200">
+            Calcular Reparto
+          </button>
+        </form>
+      </div>
+      <div class="mt-6 pt-4 border-t border-slate-700/60">
+        <h3 class="text-xs uppercase font-semibold text-slate-400 tracking-wider mb-2">Resultado</h3>
+        <div class="bg-slate-900/80 border border-slate-700 rounded-lg p-4 text-sm text-slate-200 min-h-[100px]" id="salidaCamellos">
+          Ingresa un número y haz clic en calcular.
+        </div>
+      </div>
+    </section>
+
+    <!-- Tarjeta 2: Reparto de Panes -->
+    <section class="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-xl flex flex-col justify-between hover:border-teal-500/50 transition duration-300">
+      <div>
+        <div class="flex items-center justify-between border-b border-slate-700 pb-4 mb-4">
+          <h2 class="text-xl font-bold text-teal-400 flex items-center gap-2">
+            <span>🥖</span> Capítulo IV: El Pago Justo de los Panes
+          </h2>
+          <span class="text-xs font-semibold px-2.5 py-1 bg-teal-500/10 text-teal-300 rounded-full border border-teal-500/20">Ejercicio 2</span>
+        </div>
+        <p class="text-slate-300 text-sm mb-5">
+          Calcula el reparto matemático exacto de 8 monedas según los tercios consumidos por el Vizconde.
+        </p>
+        <form id="formPanes" onsubmit="return false;" class="space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="panesBeremiz" class="block text-sm font-medium text-slate-300 mb-1">
+                Panes de Beremiz:
+              </label>
+              <input type="number" id="panesBeremiz" value="5" class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition">
+            </div>
+            <div>
+              <label for="panesHank" class="block text-sm font-medium text-slate-300 mb-1">
+                Panes de Hank:
+              </label>
+              <input type="number" id="panesHank" value="3" class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition">
+            </div>
+          </div>
+          <button type="button" onclick="calcularPagoPanes()" class="w-full bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2.5 rounded-lg shadow-md transition duration-200">
+            Calcular Monedas
+          </button>
+        </form>
+      </div>
+      <div class="mt-6 pt-4 border-t border-slate-700/60">
+        <h3 class="text-xs uppercase font-semibold text-slate-400 tracking-wider mb-2">Resultado</h3>
+        <div class="bg-slate-900/80 border border-slate-700 rounded-lg p-4 text-sm text-slate-200 min-h-[100px]" id="salidaPanes">
+          Haz clic en el botón para calcular la división justa.
+        </div>
+      </div>
+    </section>
+
+    <!-- Tarjeta 3: Ecuación Cuadrática -->
+    <section class="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-xl flex flex-col justify-between hover:border-sky-500/50 transition duration-300">
+      <div>
+        <div class="flex items-center justify-between border-b border-slate-700 pb-4 mb-4">
+          <h2 class="text-xl font-bold text-sky-400 flex items-center gap-2">
+            <span>📐</span> Resolución de Ecuación Cuadrática
+          </h2>
+          <span class="text-xs font-semibold px-2.5 py-1 bg-sky-500/10 text-sky-300 rounded-full border border-sky-500/20">Ejercicio 3</span>
+        </div>
+        <p class="text-slate-300 text-sm mb-4">
+          Ingrese los valores para resolver la ecuación: <span class="font-mono text-sky-300">ax² + bx + c = 0</span>
+        </p>
+        <div class="grid grid-cols-3 gap-3 mb-4">
+          <div>
+            <label for="valA" class="block text-xs font-medium text-slate-300 mb-1">Coeficiente a</label>
+            <input type="number" id="valA" value="3" class="w-full bg-slate-900 border border-slate-600 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition">
+          </div>
+          <div>
+            <label for="valB" class="block text-xs font-medium text-slate-300 mb-1">Coeficiente b</label>
+            <input type="number" id="valB" value="6" class="w-full bg-slate-900 border border-slate-600 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition">
+          </div>
+          <div>
+            <label for="valC" class="block text-xs font-medium text-slate-300 mb-1">Coeficiente c</label>
+            <input type="number" id="valC" value="3" class="w-full bg-slate-900 border border-slate-600 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition">
+          </div>
+        </div>
+        <button onclick="resolverCuadratica()" class="w-full bg-sky-600 hover:bg-sky-500 text-white font-semibold py-2.5 rounded-lg shadow-md transition duration-200">
+          Calcular Raíces
+        </button>
+      </div>
+      <div class="mt-6 pt-4 border-t border-slate-700/60">
+        <h3 class="text-xs uppercase font-semibold text-slate-400 tracking-wider mb-2">Resultado</h3>
+        <pre id="resultadoCuadratica" class="bg-slate-900/80 border border-slate-700 rounded-lg p-4 text-sm font-mono text-sky-200 min-h-[100px] whitespace-pre-wrap">Esperando datos...</pre>
+      </div>
+    </section>
+
+    <!-- Tarjeta 4: Estimación de Pi -->
+    <section class="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-xl flex flex-col justify-between hover:border-emerald-500/50 transition duration-300">
+      <div>
+        <div class="flex items-center justify-between border-b border-slate-700 pb-4 mb-4">
+          <h2 class="text-xl font-bold text-emerald-400 flex items-center gap-2">
+            <span>🥧</span> Estimación del Número Pi (&pi;)
+          </h2>
+          <span class="text-xs font-semibold px-2.5 py-1 bg-emerald-500/10 text-emerald-300 rounded-full border border-emerald-500/20">Ejercicio 4</span>
+        </div>
+        <p class="text-slate-300 text-sm mb-5">
+          Calcula la aproximación usando sumatorias para n = 100, 10,000 y 1,000,000.
+        </p>
+        <button onclick="calcularPi()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-2.5 rounded-lg shadow-md transition duration-200">
+          Ejecutar Estimación
+        </button>
+      </div>
+      <div class="mt-6 pt-4 border-t border-slate-700/60">
+        <h3 class="text-xs uppercase font-semibold text-slate-400 tracking-wider mb-2">Resultado</h3>
+        <pre id="resultadoPi" class="bg-slate-900/80 border border-slate-700 rounded-lg p-4 text-xs sm:text-sm font-mono text-emerald-200 min-h-[100px] whitespace-pre-wrap overflow-x-auto">Haz clic en ejecutar...</pre>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="max-w-7xl mx-auto text-center mt-12 text-slate-500 text-sm">
+    Integración de ejercicios matemáticos en interfaz unificada.
+  </footer>
+
+  <!-- Lógica JavaScript Unificada -->
+  <script>
+    // --- Ejercicio 1: Reparto de Camellos ---
+    function calcularRepartoCamellos() {
+      var inputElement = document.getElementById("inputCamellos");
+      var camellosIniciales = parseInt(inputElement.value);
+
+      if (isNaN(camellosIniciales) || camellosIniciales <= 0) {
+        document.getElementById("salidaCamellos").innerHTML = "<span class='text-red-400'>Por favor, ingrese un número válido de camellos.</span>";
+        return;
+      }
+
+      var totalConPrestado = camellosIniciales + 1;
+      var hermanoMayor = Math.floor(totalConPrestado / 2);
+      var hermanoMedio = Math.floor(totalConPrestado / 3);
+      var hermanoMenor = Math.floor(totalConPrestado / 9);
+
+      var camellosEntregados = hermanoMayor + hermanoMedio + hermanoMenor;
+      var sobraParaBeremiz = totalConPrestado - camellosEntregados;
+
+      var resultadoHTML = "<p class='font-semibold text-amber-300 mb-2'>Resultados con " + totalConPrestado + " camellos (incluye 1 prestado):</p>" +
+        "<ul class='list-disc list-inside space-y-1 text-slate-300 mb-3'>" +
+          "<li>Hermano Mayor (1/2): <strong class='text-amber-200'>" + hermanoMayor + "</strong> camellos</li>" +
+          "<li>Hermano Medio (1/3): <strong class='text-amber-200'>" + hermanoMedio + "</strong> camellos</li>" +
+          "<li>Hermano Menor (1/9): <strong class='text-amber-200'>" + hermanoMenor + "</strong> camellos</li>" +
+        "</ul>" +
+        "<p class='text-slate-300'>Total entregado: <span class='font-semibold'>" + camellosEntregados + "</span> camellos.<br>" +
+        "Sobran para Beremiz: <strong class='text-amber-300'>" + sobraParaBeremiz + "</strong> camellos (1 devuelto + 1 de ganancia).</p>";
+
+      document.getElementById("salidaCamellos").innerHTML = resultadoHTML;
+    }
+
+    // --- Ejercicio 2: Pago Justo de los Panes ---
+    function calcularPagoPanes() {
+      var pBeremiz = parseInt(document.getElementById("panesBeremiz").value);
+      var pHank = parseInt(document.getElementById("panesHank").value);
+
+      if (isNaN(pBeremiz) || isNaN(pHank) || pBeremiz < 0 || pHank < 0) {
+        document.getElementById("salidaPanes").innerHTML = "<span class='text-red-400'>Por favor, ingrese cantidades válidas de panes.</span>";
+        return;
+      }
+
+      var totalPanes = pBeremiz + pHank;
+      var totalTercios = totalPanes * 3;
+      var porcionPorPersona = totalTercios / 3;
+
+      var aporteBeremiz = (pBeremiz * 3) - porcionPorPersona;
+      var aporteHank = (pHank * 3) - porcionPorPersona;
+
+      var resultadoHTML = "<p class='font-semibold text-teal-300 mb-2'>Distribución de tercios y pago:</p>" +
+        "<ul class='list-disc list-inside space-y-1 text-slate-300'>" +
+          "<li>Total de panes: <strong class='text-teal-200'>" + totalPanes + "</strong> (" + totalTercios + " tercios)</li>" +
+          "<li>Cada persona comió: <strong class='text-teal-200'>" + porcionPorPersona.toFixed(1) + "</strong> tercios</li>" +
+          "<li>Beremiz aportó al Vizconde: <strong class='text-teal-200'>" + aporteBeremiz + "</strong> tercios &rarr; <strong class='text-teal-300'>" + aporteBeremiz + " monedas</strong></li>" +
+          "<li>Hank aportó al Vizconde: <strong class='text-teal-200'>" + aporteHank + "</strong> tercios &rarr; <strong class='text-teal-300'>" + aporteHank + " monedas</strong></li>" +
+        "</ul>";
+
+      document.getElementById("salidaPanes").innerHTML = resultadoHTML;
+    }
+
+    // --- Ejercicio 3: Ecuación Cuadrática ---
+    function resolverCuadratica() {
+      let a = parseFloat(document.getElementById('valA').value);
+      let b = parseFloat(document.getElementById('valB').value);
+      let c = parseFloat(document.getElementById('valC').value);
+
+      if (isNaN(a) || isNaN(b) || isNaN(c)) {
+        document.getElementById('resultadoCuadratica').innerText = "Por favor ingrese coeficientes numéricos válidos.";
+        return;
+      }
+
+      if (a === 0) {
+        document.getElementById('resultadoCuadratica').innerText = "El coeficiente 'a' no puede ser 0 en una ecuación cuadrática.";
+        return;
+      }
+
+      let D = (b ** 2) - (4 * a * c);
+      let textoResultado = "";
+
+      if (D > 0) {
+        let x1 = (-b + Math.sqrt(D)) / (2 * a);
+        let x2 = (-b - Math.sqrt(D)) / (2 * a);
+        textoResultado = "La ecuación tiene dos raíces reales:\n" +
+                         "x1 = " + x1.toFixed(4) + "\n" +
+                         "x2 = " + x2.toFixed(4);
+      } else if (D === 0) {
+        let x = -b / (2 * a);
+        textoResultado = "La ecuación tiene una raíz única:\n" +
+                         "x = " + x.toFixed(4);
+      } else {
+        textoResultado = "La ecuación no tiene raíces reales (raíces complejas).";
+      }
+
+      document.getElementById('resultadoCuadratica').innerText = textoResultado;
+    }
+
+    // --- Ejercicio 4: Estimación de Pi ---
+    function calcularPi() {
+      let nValues = [100, 10000, 1000000];
+      let textoResultado = "";
+
+      for (let i = 0; i < nValues.length; i++) {
+        let n = nValues[i];
+        let suma = 0;
+
+        for (let k = 1; k <= n; k++) {
+          suma += 1 / (k ** 2);
+        }
+
+        let piEst = Math.sqrt(6 * suma);
+        textoResultado += "Para n = " + n.toLocaleString() + ", π estimado = " + piEst.toFixed(15) + "\n";
+      }
+
+      textoResultado += "\nValor real de Math.PI = " + Math.PI.toFixed(15);
+
+      document.getElementById('resultadoPi').innerText = textoResultado;
+    }
+  </script>
+
+</body>
+</html>

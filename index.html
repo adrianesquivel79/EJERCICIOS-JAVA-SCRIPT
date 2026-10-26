@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 1: Los 35 Camellos</title>
+  <style>
+    body {
+      background-color: #fdf6e3;
+      color: #2b2b2b;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+    }
+    .card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      padding: 25px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 4px 12px rgba(184, 115, 51, 0.15);
+      border: 1px solid #e0c9a6;
+    }
+    h2 {
+      color: #b87333;
+      margin-top: 0;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #5c3a21;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #d4a373;
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #d4a373;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #b87333;
+    }
+    .resultado {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #fefae0;
+      border-left: 5px solid #d4a373;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>Capítulo III: El Reparto de los Camellos</h2>
+    <p>Beremiz agrega 1 camello prestado para hacer divisibles las partes entre los tres hermanos.</p>
+    
+    <form id="formCamellos" onsubmit="return false;">
+      <label for="inputCamellos">Cantidad inicial de camellos:</label>
+      <input type="number" id="inputCamellos" value="35">
+      
+      <button type="button" onclick="calcularRepartoCamellos()">Calcular Reparto</button>
+    </form>
+
+    <div class="resultado" id="salidaCamellos">
+      Ingresa un número y haz clic en calcular.
+    </div>
+  </div>
+
+  <script>
+    function calcularRepartoCamellos() {
+      // Entrada
+      var camellosIniciales = parseInt(document.getElementById("inputCamellos").value);
+
+      // Algoritmo básico
+      var totalConPrestado = camellosIniciales + 1;
+      var hermanoMayor = Math.floor(totalConPrestado / 2);
+      var hermanoMedio = Math.floor(totalConPrestado / 3);
+      var hermanoMenor = Math.floor(totalConPrestado / 9);
+
+      var camellosEntregados = hermanoMayor + hermanoMedio + hermanoMenor;
+      var sobraParaBeremiz = totalConPrestado - camellosEntregados;
+
+      // Salida
+      var resultadoHTML = "<p><strong>Resultados con " + totalConPrestado + " camellos (1 prestado):</strong></p>" +
+        "<ul>" +
+          "<li>Hermano Mayor (1/2): <strong>" + hermanoMayor + "</strong> camellos</li>" +
+          "<li>Hermano Medio (1/3): <strong>" + hermanoMedio + "</strong> camellos</li>" +
+          "<li>Hermano Menor (1/9): <strong>" + hermanoMenor + "</strong> camellos</li>" +
+        "</ul>" +
+        "<p>Total entregado: " + camellosEntregados + " camellos.<br>" +
+        "Sobran para Beremiz: <strong>" + sobraParaBeremiz + "</strong> camellos (1 devuelto + 1 de ganancia).</p>";
+
+      document.getElementById("salidaCamellos").innerHTML = resultadoHTML;
+    }
+  </script>
+
+</body>
+</html>
